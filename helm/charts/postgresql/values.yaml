@@ -1,0 +1,18 @@
+namespace: student-api
+postgres:
+  image: postgres:17.3
+  secretName: dev-db
+  serviceName: postgres
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+  storage:
+    size: 1Gi
+    storageClass: manual
+    hostPath: /data/postgres-pv
+  nodeSelector:
+    type: application
