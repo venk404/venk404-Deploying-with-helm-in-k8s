@@ -35,7 +35,7 @@ helm install vault ./vault/ -n vault --create-namespace
 
 kubectl exec vault-0 -n vault -- vault operator init -key-shares=1 -key-threshold=1 -format=json > cluster-keys.json
 VAULT_UNSEAL_KEY=$(jq -r '.unseal_keys_b64[0]' cluster-keys.json)
-kubectl exec vault-0 -n vault -- vault operator unseal RFLFVzOcUaek9f5VDfA/5DWIN8kVZjGR7sIZi7P3F8I=
+kubectl exec vault-0 -n vault -- vault operator unseal <unseal_token>
 ```
 
 ### 5) Configure Vault Secrets:  
